@@ -1,20 +1,18 @@
-def isPrime(n):
-  if (n <= 1):
-    return False
-  if (n <= 3):
-    return True
-  limit = int(n**(.5))
-  for i in range(2, limit + 1):
-    if (n % i == 0):
-      return False
-  return True
+#Sieve of Eratosthenes implementation
 
-sum = 0
+def sumPrimeSieve(n):
+  l = [True] * (n + 1)
+  for i in range(2, int(n**0.5) + 1):
+    if l[i]:
+      for j in range(i**2, n + 1, i):
+        l[j] = False
+  sum = 0
+  for i in range(2, n):
+    if l[i]:
+      sum += i
+  return sum
 
-for i in range(1, int(2E6)):
-  if (isPrime(i)):
-    sum += i
-  print "{0}\r".format(i),
-print
 
-print "Answer:", sum
+
+print sumPrimeSieve(int(2E6))
+

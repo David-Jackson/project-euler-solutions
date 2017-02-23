@@ -21,10 +21,10 @@ sum = 0
 decrypted = []
 password = [103, 111, 100]
 
-for i in range(len(encrypted)): 
-  #print i, i%len(password)
-  decrypted.append(encrypted[i] ^ password[i % len(password)])
-  sum = sum + (encrypted[i] ^ password[i % len(password)])
+for i in range(len(encrypted)):
+    # print i, i%len(password)
+    decrypted.append(encrypted[i] ^ password[i % len(password)])
+    sum = sum + (encrypted[i] ^ password[i % len(password)])
 
 print "Answer:", sum
 
@@ -36,34 +36,34 @@ print "Answer:", sum
 
 low = 97
 hi = 122 + 1
-print max(range(low,hi))
-print min(range(low,hi))
+print max(range(low, hi))
+print min(range(low, hi))
 
 strs = []
 ind = []
 
-for a in range(low,hi): 
-  for b in range(low, hi):
-    for c in range(low, hi):
-      decr = []
-      for i in range(0, 21, 3):
-        decr.append(encrypted[i]^a)
-        decr.append(encrypted[i+1]^b)
-        decr.append(encrypted[i+2]^c)
-      s = ''.join(chr(j) for j in decr)
-      #print a,b,c,s
-      strs.append(s)
-      ind.append((a*1000000)+(b*1000)+c)
+for a in range(low, hi):
+    for b in range(low, hi):
+        for c in range(low, hi):
+            decr = []
+            for i in range(0, 21, 3):
+                decr.append(encrypted[i] ^ a)
+                decr.append(encrypted[i+1] ^ b)
+                decr.append(encrypted[i+2] ^ c)
+            s = ''.join(chr(j) for j in decr)
+            # print a,b,c,s
+            strs.append(s)
+            ind.append((a * 1000000) + (b * 1000) + c)
 
 
 with open("p59_strings.txt", "w") as file:
-  for s in strs: 
-    file.write(s + "\n")
+    for s in strs:
+        file.write(s + "\n")
 
 
 with open("p59_indeces.txt", "w") as file:
-  for s in ind: 
-    file.write(str(s) + "\n")
+    for s in ind:
+        file.write(str(s) + "\n")
 
 
 '''
